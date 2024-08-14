@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Get-Schwifty';
+    src: url('public/fonts/get-schwifty.ttf') format('ttf'),
+        url('public/fonts/get-schwifty.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Get-Schwifty';
+    src: url('public/fonts/get-schwifty.ttf') format('ttf'),
+        url('public/fonts/get-schwifty.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
