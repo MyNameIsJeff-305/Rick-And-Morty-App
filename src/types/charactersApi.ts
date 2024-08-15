@@ -1,6 +1,6 @@
 export interface RickAndMortyCharacters {
     readonly info:    Info;
-    readonly results: Result[];
+    readonly results: Character[];
 }
 
 export interface Info {
@@ -10,7 +10,7 @@ export interface Info {
     readonly prev:  null;
 }
 
-export interface Result {
+export interface Character {
     readonly id:       number;
     readonly name:     string;
     readonly status:   Status;

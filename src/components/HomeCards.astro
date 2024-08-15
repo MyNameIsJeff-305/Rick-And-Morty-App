@@ -1,0 +1,23 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  href: string;
+}
+
+const { image, title, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class="flex flex-row w-[60%] justify-between items-center bg-gray-800 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
+>
+  <picture class="flex-shrink-0">
+    <img src={image} alt="Characters" class="h-32 w-32 object-cover" />
+  </picture>
+  <div
+    class="text-lg font-semibold text-white flex flex-row justify-center items-center w-full"
+  >
+    {title}
+  </div>
+</a>
