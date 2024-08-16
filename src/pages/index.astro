@@ -1,9 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import HomeCards from "../components/HomeCards.astro";
 ---
 
 <Layout title="Rick and Morty App">
-	<main>
-		
+	<main class="flex flex-col gap-y-5 items-center my-6 w-full max-w-xl">
+    	<HomeCards image="/images/characters.jpg" title="CHARACTERS" href="/characters"/>
+    	<HomeCards image="/images/locations.jpg" title="LOCATIONS" href="/locations"/>
+    	<HomeCards image="/images/episodes.jpg" title="EPISODES" href="/episodes" />
 	</main>
 </Layout>

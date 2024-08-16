@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
 	title: string;
 }
@@ -12,14 +14,20 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
-	<body class="flex flex-col bg-gray-900 min-h-screen items-center content-center justify-center">
+	<body
+		class="flex flex-col bg-gray-900 min-h-screen items-center content-center justify-center"
+	>
+		<Header />
+		<!-- <main class=" flex flex-col justify-center content-center max-w-5xs m-auto"></main> -->
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -35,16 +43,6 @@ const { title } = Astro.props;
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+		color-scheme: dark light;
 	}
 </style>
