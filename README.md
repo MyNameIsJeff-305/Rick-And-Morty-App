@@ -1,5 +1,7 @@
 # Astro Starter Kit: Basics
 
+https://myrickandmortyapp.netlify.app
+
 ```sh
 npm create astro@latest -- --template basics
 ```
