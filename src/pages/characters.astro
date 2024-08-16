@@ -1,20 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CharacterCard from "../components/CharacterCard.astro";
 import type { Character } from "../types/charactersApi";
-import { getCharacters } from "../lib/character";
-
-const { results }: { results: Character[] } =
-  (await getCharacters()) as unknown as { results: Character[] };
-
-// Add a function to load more characters
-const loadMore = async () => {
-  const { results: newResults }: { results: Character[] } =
-    (await getCharacters()) as unknown as { results: Character[] };
-  results.push(...newResults);
-};
+import CharactersList from "../components/CharactersList.jsx";
 ---
 
 <Layout title="Rick and Morty Characters">
-  
+  <CharactersList client:only/>
 </Layout>
