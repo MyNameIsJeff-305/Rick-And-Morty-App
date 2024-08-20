@@ -1,10 +1,4 @@
-import type { Character, RickAndMortyCharacters } from "../types/charactersApi";
-
-export const getCharacters = async () => {
-    const res = await fetch("https://rickandmortyapi.com/api/character");
-    const data = await res.json();
-    return data as Character[];
-}
+import type { Character } from "../types/charactersApi";
 
 export const getCharactersPage = async (page: number) => {
     const res = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);

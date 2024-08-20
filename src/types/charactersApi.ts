@@ -11,6 +11,7 @@ export interface Info {
 }
 
 export interface Character {
+    [x: string]: any;
     readonly id:       number;
     readonly name:     string;
     readonly status:   Status;
@@ -39,6 +40,7 @@ export interface Location {
 export enum Species {
     Alien = "Alien",
     Human = "Human",
+    Unknown = "Unknown",
 }
 
 export enum Status {
