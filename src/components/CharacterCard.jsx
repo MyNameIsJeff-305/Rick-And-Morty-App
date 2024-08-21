@@ -14,22 +14,20 @@ export default function CharacterCard({ img, name, status, id }) {
 
     return (
         <a
-            href={`/character/${id}`}
-            className="aspect-w-1 aspect-h-1 border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col justify-between"
-            style={{ borderRadius: '12px' }}
+            href={`/characters/${id}`}
+            className="border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition transform duration-200 flex flex-col justify-between rounded-lg overflow-ellipsis"
         >
-            <picture className="flex justify-center p-0 items-center">
+            <picture className="flex justify-center items-center bg-gray-900 h-56 sm:h-64 md:h-72 lg:h-80">
                 <img
                     onError={(e) => e.target.src = '/images/img-placeholder.jpeg'}
-                    className="items-center"
+                    className="object-cover w-full h-full"
                     src={img}
                     alt={`Image of ${name}`}
-                    style={{ borderTopLeftRadius: '12px', borderTopRightRadius: '12px' }}
                 />
             </picture>
 
-            <header className="w-full p-4 flex-grow flex flex-col items-start justify-start truncate" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                <h2 className="mb-2 text-xl font-bold tracking-tight text-white truncate">
+            <header className="p-4 flex flex-col items-start justify-start space-y-2">
+                <h2 className="text-lg md:text-xl font-bold text-white truncate overflow-ellipsis">
                     {name}
                 </h2>
                 <span className={statusColor()}>

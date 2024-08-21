@@ -1,0 +1,112 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCharactersPage } from "../../lib/character";
+import { type Character } from "../../types/charactersApi";
+import { getCharacter } from "../../lib/character";
+
+const { id } = Astro.params;
+
+let character: Character | undefined;
+
+if (id) {
+    character = await getCharacter(id);
+}
+
+export async function getStaticPaths() {
+    const characters = await getCharactersPage(1);
+    let pages = characters.info.pages;
+    let ids = [];
+
+    for (let i = 1; i <= pages * 20; i++) {
+        ids.push({
+            params: { id: i.toString() },
+        });
+    }
+
+    console.log("ids", ids);
+
+    return ids;
+}
+---
+
+<Layout title={character?.name ?? ""} />
+<div class="w-full h-fit">
+    <h1 class="text-2xl font-semibold text-white text-center mt-4">
+        Character Details
+    </h1>
+    <hr class="w-1/4 mx-auto border-2 border-gray-400 rounded-full my-4" />
+</div>
+<div
+    class="flex flex-col h-auto md:flex-row w-full items-start p-0 max-w-lg mx-auto rounded-lg shadow-md bg-gray-800 p-4 rounded-lg shadow-md"
+>
+    <img
+        src={character?.image}
+        alt={character?.name}
+        class="w-[50%] h-auto rounded-md md:mr-6 mb-4 md:mb-0"
+    />
+    <div class="flex flex-col md:text-left w-[50%] items-start pt-5">
+        <h2 class="text-2xl font-semibold text-white mb-5">
+            {character?.name}
+        </h2>
+
+        <div class="flex flex-row mb-3 gap-2 justify-between">
+            <span class="text-m text-white flex flex-row items-center"
+                >Status:
+            </span>
+            <p
+                class="text-sm text-gray-600 flex flex-row items-center"
+                class:list={[
+                    character?.status === "Alive" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-400 text-green-900",
+                    character?.status === "Dead" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-red-400 text-red-900",
+                    character?.status === "unknown" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-gray-400 text-gray-900",
+                ]}
+            >
+                {character?.status}
+            </p>
+        </div>
+        <div class="flex flex-row justify-between mb-3 gap-2">
+            <span class="text-m text-white flex flex-row">Species: </span>
+            <p
+                class="text-sm text-gray-600 flex flex-row items-center"
+                class:list={[
+                    character?.species === "Human" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-blue-400 text-blue-900",
+                    character?.species === "Alien" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-yellow-400 text-yellow-900",
+                    character?.species === "Robot" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-gray-400 text-gray-900",
+                    character?.species === "Animal" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-400 text-green-900",
+                    character?.species === "Disease" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-red-400 text-red-900",
+                ]}
+            >
+                {character?.species}
+            </p>
+        </div>
+
+        <div class="flex flex-row justify-between mb-3 gap-2">
+            <span class="text-m text-white flex flex-row"
+                >Gender:
+            </span>
+            <p
+                class="text-sm text-gray-600 flex flex-row items-center"
+                class:list={[
+                    character?.gender === "Male" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-blue-400 text-blue-900",
+                    character?.gender === "Female" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-pink-400 text-pink-900",
+                    character?.gender === "unknown" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-gray-400 text-gray-900",
+                    character?.gender === "Genderless" &&
+                        "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-purple-400 text-purple-900",
+                ]}
+            >
+                {character?.gender}
+            </p>
+        </div>
+    </div>
+</div>

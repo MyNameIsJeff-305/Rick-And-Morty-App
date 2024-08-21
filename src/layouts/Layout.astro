@@ -13,18 +13,17 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body
-		class="flex flex-col bg-gray-900 min-h-screen items-center content-center justify-center"
-	>
+	<body class="flex flex-col bg-gray-900 w-full min-h-screen items-start justify-start px-4 py-8 sm:py-10 lg:justify-center">
 		<Header />
-		<!-- <main class=" flex flex-col justify-center content-center max-w-5xs m-auto"></main> -->
-		<slot />
+		<main class="flex flex-col justify-center items-center w-full max-w-5xl mx-auto">
+			<slot />
+		</main>
 	</body>
 </html>
 
@@ -44,5 +43,19 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background: #13151a;
 		color-scheme: dark light;
+	}
+	/* Adjustments for responsive behavior */
+	body {
+		padding: 20px;
+	}
+	@media (min-width: 640px) {
+		body {
+			padding: 40px;
+		}
+	}
+	@media (min-width: 1024px) {
+		body {
+			padding: 60px;
+		}
 	}
 </style>

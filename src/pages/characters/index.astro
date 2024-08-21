@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { Character } from "../../types/charactersApi.js";
+import CharactersList from "../../components/CharactersList.jsx";
+import { Suspense } from "react";
+---
+
+<Layout title="Rick and Morty Characters">
+    <CharactersList client:only />
+</Layout>
