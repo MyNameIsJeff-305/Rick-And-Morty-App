@@ -2,6 +2,11 @@
 
 This app provides information about the characters, locations, and episodes of the *Rick and Morty* TV show. It is built using [Astro.JS](https://astro.build/), React, and JavaScript, and fetches data from the [Rick and Morty API](https://rickandmortyapi.com).
 
+[Live Website](https://66c546b58c87830008652f2f--myrickandmortyapp.netlify.app/)
+
+![Screenshot 2024-08-20 at 9 52 30 PM](https://github.com/user-attachments/assets/0f3ed2ce-bf3a-4874-a49a-76e1fa90af87)
+
+
 ## Features
 
 - Browse and view details for all characters, locations, and episodes.
@@ -24,54 +29,61 @@ To run this project locally, follow these steps:
 
    ```bash
    git clone https://github.com/yourusername/rick-and-morty-app.git
-Navigate to the project directory:
-bash
-Copy code
-cd rick-and-morty-app
-Install dependencies:
-bash
-Copy code
-npm install
-Start the development server:
-bash
-Copy code
-npm run dev
-The app will be running at http://localhost:3000.
-API
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd rick-and-morty-app
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. The app will be running at http://localhost:4321.
+
+
+## API
 
 This app fetches data from the Rick and Morty API, a RESTful API that provides detailed information on characters, locations, and episodes of the Rick and Morty TV show.
 
-Project Structure
+## Project Structure
 
-bash
-Copy code
-├── public
-├── src
-│   ├── components
-│   ├── pages
-│   ├── styles
-│   └── utils
-├── astro.config.mjs
-├── package.json
-└── README.md
-components/: Contains all React components such as CharacterCard, LocationCard, and EpisodeCard.
-pages/: Contains the main pages of the app like Characters, Locations, and Episodes.
-styles/: Global styles and component-specific styles.
-utils/: Helper functions for API calls and data manipulation.
-Usage
+   ```bash
+   ├── public
+   ├── src
+   │   ├── components
+   │   ├── pages
+   │   ├── styles
+   │   └── utils
+   ├── astro.config.mjs
+   ├── package.json
+   └── README.md
+   ```
 
-Characters Page: Browse and search for characters, apply filters, and view character details.
-Locations Page: Explore different locations from the show with detailed descriptions.
-Episodes Page: Find information on all episodes, including air dates and episode summaries.
-Contributing
+- components/: Contains all React components such as CharacterCard, LocationCard, and EpisodeCard.
+- pages/: Contains the main pages of the app like Characters, Locations, and Episodes.
+- styles/: Global styles and component-specific styles.
+- utils/: Helper functions for API calls and data manipulation.
+
+## Usage
+
+1. Characters Page: Browse and search for characters, apply filters, and view character details.
+2. Locations Page: Explore different locations from the show with detailed descriptions.
+3. Episodes Page: Find information on all episodes, including air dates and episode summaries.
+
+## Contributing
 
 Contributions are welcome! If you'd like to contribute, please fork the repository and make your changes in a new branch. Once your changes are ready, open a pull request.
 
-License
+## License
 
 This project is licensed under the MIT License.
 
-Acknowledgements
+## Acknowledgements
 
 Rick and Morty API for providing the data.
 Astro.JS for the static site generation framework.
