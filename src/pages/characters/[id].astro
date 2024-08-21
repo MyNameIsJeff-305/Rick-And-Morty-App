@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCharactersPage } from "../../lib/character";
-import { type Character } from "../../types/charactersApi";
+import { type Character, type RickAndMortyCharacters, Species, Gender } from "../../types/charactersApi";
 import { getCharacter } from "../../lib/character";
 
 const { id } = Astro.params;
@@ -9,12 +9,12 @@ const { id } = Astro.params;
 let character: Character | undefined;
 
 if (id) {
-    character = await getCharacter(id);
+    character = await getCharacter(parseInt(id));
 }
 
 export async function getStaticPaths() {
-    const characters = await getCharactersPage(1);
-    let pages = characters.info.pages;
+    const characters = await getCharactersPage(1) as unknown as RickAndMortyCharacters;
+    let pages = characters.info?.pages;
     let ids = [];
 
     for (let i = 1; i <= pages * 20; i++) {
@@ -22,8 +22,6 @@ export async function getStaticPaths() {
             params: { id: i.toString() },
         });
     }
-
-    console.log("ids", ids);
 
     return ids;
 }
@@ -72,15 +70,15 @@ export async function getStaticPaths() {
             <p
                 class="text-sm text-gray-600 flex flex-row items-center"
                 class:list={[
-                    character?.species === "Human" &&
+                    character?.species === Species.Human &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-blue-400 text-blue-900",
-                    character?.species === "Alien" &&
+                    character?.species === Species.Alien &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-yellow-400 text-yellow-900",
-                    character?.species === "Robot" &&
+                    character?.species === Species.Robot &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-gray-400 text-gray-900",
-                    character?.species === "Animal" &&
+                    character?.species === Species.Animal &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-400 text-green-900",
-                    character?.species === "Disease" &&
+                    character?.species === Species.Disease &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-red-400 text-red-900",
                 ]}
             >
@@ -89,19 +87,17 @@ export async function getStaticPaths() {
         </div>
 
         <div class="flex flex-row justify-between mb-3 gap-2">
-            <span class="text-m text-white flex flex-row"
-                >Gender:
-            </span>
+            <span class="text-m text-white flex flex-row">Gender: </span>
             <p
                 class="text-sm text-gray-600 flex flex-row items-center"
                 class:list={[
-                    character?.gender === "Male" &&
+                    character?.gender === Gender.Male &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-blue-400 text-blue-900",
-                    character?.gender === "Female" &&
+                    character?.gender === Gender.Female &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-pink-400 text-pink-900",
-                    character?.gender === "unknown" &&
+                    character?.gender === Gender.Unknown &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-gray-400 text-gray-900",
-                    character?.gender === "Genderless" &&
+                    character?.gender === Gender.Genderless &&
                         "text-xs w-fit font-semibold mr-2 px-2.5 py-0.5 rounded bg-purple-400 text-purple-900",
                 ]}
             >

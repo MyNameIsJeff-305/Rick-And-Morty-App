@@ -30,6 +30,7 @@ export enum Gender {
     Female = "Female",
     Male = "Male",
     Unknown = "unknown",
+    Genderless = "Genderless",
 }
 
 export interface Location {
@@ -41,6 +42,9 @@ export enum Species {
     Alien = "Alien",
     Human = "Human",
     Unknown = "Unknown",
+    Robot = "Robot",
+    Animal = "Animal",
+    Disease = "Disease",
 }
 
 export enum Status {
