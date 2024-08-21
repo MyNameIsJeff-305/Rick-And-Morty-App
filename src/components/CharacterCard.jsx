@@ -15,7 +15,7 @@ export default function CharacterCard({ img, name, status, id }) {
     return (
         <a
             href={`/characters/${id}`}
-            className="border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition transform duration-200 flex flex-col justify-between rounded-lg overflow-hidden"
+            className="border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition transform duration-200 flex flex-col justify-between rounded-lg overflow-ellipsis"
         >
             <picture className="flex justify-center items-center bg-gray-900 h-56 sm:h-64 md:h-72 lg:h-80">
                 <img
@@ -27,7 +27,7 @@ export default function CharacterCard({ img, name, status, id }) {
             </picture>
 
             <header className="p-4 flex flex-col items-start justify-start space-y-2">
-                <h2 className="text-lg md:text-xl font-bold text-white truncate">
+                <h2 className="text-lg md:text-xl font-bold text-white truncate overflow-ellipsis">
                     {name}
                 </h2>
                 <span className={statusColor()}>
